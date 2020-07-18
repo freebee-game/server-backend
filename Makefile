@@ -11,14 +11,18 @@ CFLAGS +=	-DHAVE_PLEDGE
 
 PROG1 =	freebee-daily
 PROG2 =	freebee-random
+PROG3 =	freebee-yesterday
 OBJS =	arc4random_uniform.o main.o strlcat.o
 OBJS1 =	anagram-daily.o
 OBJS2 =	anagram-random.o
+OBJS3 =	anagram-yesterday.o
 
-all: ${OBJS} ${OBJS1} ${OBJS2}
+all: ${OBJS} ${OBJS1} ${OBJS2} ${OBJS3}
 	${CC} -static ${LDFLAGS} -o ${PROG1} ${OBJS1} ${OBJS}
 	${CC} -static ${LDFLAGS} -o ${PROG2} ${OBJS2} ${OBJS}
+	${CC} -static ${LDFLAGS} -o ${PROG3} ${OBJS3} ${OBJS}
 
 clean:
-	rm -f ${PROG1} ${PROG2} ${OBJS1} ${OBJS2} ${OBJS} \
-		${PROG1}.core ${PROG2}.core
+	rm -f ${PROG1} ${PROG2} ${PROG3} ${OBJS1} ${OBJS2} \
+		${OBJS3} ${OBJS} ${PROG1}.core \
+			${PROG2}.core ${PROG3}.core
