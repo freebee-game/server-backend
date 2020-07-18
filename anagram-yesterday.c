@@ -165,7 +165,8 @@ again:
 	puts("Status: 200 OK\r");
 	puts("Content-Type: application/json\r");
 	puts("\r");
-	printf("{\n\t\"letters\": \"%s\",\n\t\"words\": %zu,\n\t\"total\": %zu,\n", letters, words, total);
+	printf("{\n\t\"letters\": \"%.*s\",\n\t\"center\": \"%c\",\n\t\"words\": %zu,\n\t\"total\": %zu,\n",
+		6, letters, letters[6], words, total);
 	printf("\t\"wordlist\": [");
 	for (i = 0; i < words; i++) {
 		printf("\n\t\t\"%s\"", wordlist[i]);
