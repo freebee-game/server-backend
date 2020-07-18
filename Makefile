@@ -22,6 +22,12 @@ all: ${OBJS} ${OBJS1} ${OBJS2} ${OBJS3}
 	${CC} -static ${LDFLAGS} -o ${PROG2} ${OBJS2} ${OBJS}
 	${CC} -static ${LDFLAGS} -o ${PROG3} ${OBJS3} ${OBJS}
 
+# This works for OpenBSD.
+# Tweak for your system as needed.
+install:
+	install -c -s -o www -g www -m 500 ${PROG1} \
+		${PROG2} ${PROG3} /var/www/cgi-bin
+
 clean:
 	rm -f ${PROG1} ${PROG2} ${PROG3} ${OBJS1} ${OBJS2} \
 		${OBJS3} ${OBJS} ${PROG1}.core \
