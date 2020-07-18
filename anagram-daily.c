@@ -26,19 +26,15 @@ static void
 daily_letters(void)
 {
 	FILE *fp;
-	char input[7];
 	int i;
 
 	if ((fp = fopen("../htdocs/daily/today.txt", "r")) == NULL)
 		err(1, "fopen");
 
-	for (i = 0; i < sizeof(input); i++)
-		input[i] = fgetc(fp);
+	for (i = 0; i < sizeof(letters) - 1; i++)
+		letters[i] = fgetc(fp);
 
 	(void) fclose(fp);
-
-	for (i = 0; i < sizeof(letters) - 1; i++)
-		letters[i] = input[i];
 }
 
 static void

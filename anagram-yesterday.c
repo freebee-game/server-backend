@@ -14,6 +14,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include <ctype.h>
 #include <err.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,19 +27,22 @@ static void
 daily_letters(void)
 {
 	FILE *fp;
-	char input[7];
-	int i;
+	int ch, i;
 
 	if ((fp = fopen("../htdocs/daily/yesterday.txt", "r")) == NULL)
 		err(1, "fopen");
 
-	for (i = 0; i < sizeof(input); i++)
-		input[i] = fgetc(fp);
+	for (i = 0; i < sizeof(letters) - 1; i++) {
+		ch = fgetc(fp);
+		while (!isalpha(ch)) {
+			if (ch == EOF)
+				break;
+			ch = fgetc(fp);
+		}
+		letters[i] = ch;
+	}
 
 	(void) fclose(fp);
-
-	for (i = 0; i < sizeof(letters) - 1; i++)
-		letters[i] = input[i];
 }
 
 static void
