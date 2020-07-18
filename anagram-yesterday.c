@@ -39,7 +39,20 @@ daily_letters(void)
 				break;
 			ch = fgetc(fp);
 		}
-		letters[i] = ch;
+		switch (i) {
+		case 0:
+		case 1:
+		case 2:
+			letters[i] = ch;
+			break;
+		case 3:
+			letters[6] = ch;
+			break;
+		case 4:
+		case 5:
+		case 6:
+			letters[i - 1] = ch;
+		}
 	}
 
 	(void) fclose(fp);
