@@ -21,7 +21,7 @@
 #include <string.h>
 
 #include "freebee.h"
-#include "sowpods.h"
+#include "enable1.h"
 
 static void
 daily_letters(void)
@@ -104,14 +104,14 @@ again:
 	pangram = 0;
 	word = 0;
 	words = 0;
-	while (word < sizeof(sowpods) / sizeof(sowpods[0])) {
+	while (word < sizeof(enable) / sizeof(enable[0])) {
 		j = 0;
 		special = 0;
 		yes = 0;
 		one = two = three = four = five = six = 0;
-		while (sowpods[word][j] != '\0') {
+		while (enable[word][j] != '\0') {
 			for (i = 0; i < 7; i++) {
-				if (sowpods[word][j] == letters[i]) {
+				if (enable[word][j] == letters[i]) {
 					++yes;
 					switch (i) {
 					case 0:
@@ -140,14 +140,14 @@ again:
 			}
 			++j;
 		}
-		if (special && yes == strlen(sowpods[word])) {
-			(void) strlcat(wordlist[words], sowpods[word], sizeof(wordlist[words]));
+		if (special && yes == strlen(enable[word])) {
+			(void) strlcat(wordlist[words], enable[word], sizeof(wordlist[words]));
 			++words;
 			if (special && one && two && three && four && five && six) {
 				pangram = 1;
-				total += strlen(sowpods[word]) + 7;
+				total += strlen(enable[word]) + 7;
 			} else {
-				if ((i = strlen(sowpods[word])) == 4)
+				if ((i = strlen(enable[word])) == 4)
 					i = 1;
 				total += i;
 			}
