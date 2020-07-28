@@ -9,12 +9,12 @@ CFLAGS ?=	-O2 -pipe
 CFLAGS +=	-DHAVE_ARC4RANDOM_UNIFORM -DHAVE_STRLCAT
 CFLAGS +=	-DHAVE_PLEDGE
 
-PROG1 =	freebee-daily
-PROG2 =	freebee-random
+PROG1 =	freebee-random
+PROG2 =	freebee-today
 PROG3 =	freebee-yesterday
 OBJS =	arc4random_uniform.o main.o strlcat.o
-OBJS1 =	anagram-daily.o
-OBJS2 =	anagram-random.o
+OBJS1 =	anagram-random.o
+OBJS2 =	anagram-today.o
 OBJS3 =	anagram-yesterday.o
 
 all: ${OBJS} ${OBJS1} ${OBJS2} ${OBJS3}
