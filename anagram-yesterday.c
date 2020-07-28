@@ -29,7 +29,7 @@ daily_letters(void)
 	FILE *fp;
 	int ch, i;
 
-	if ((fp = fopen("../htdocs/daily/yesterday.txt", "r")) == NULL)
+	if ((fp = fopen("/var/www/htdocs/daily/yesterday.txt", "r")) == NULL)
 		err(1, "fopen");
 
 	for (i = 0; i < sizeof(letters) - 1; i++) {
